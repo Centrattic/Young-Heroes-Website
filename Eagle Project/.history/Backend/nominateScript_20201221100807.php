@@ -1,5 +1,6 @@
 <?php
 
+require 'dbhconnect.php';
 require 'functions.php';
 
 if(isset($_POST['submit_button'])){
@@ -16,6 +17,7 @@ if(isset($_POST['submit_button'])){
         $fileSize = $file['size']; //gets size of file
         $fileError = $file['error']; //checks if error while uploading file
         $fileType = $file['type']; //gets type of file, /png
+
 
         if ($fileSize === 0) {
             $fileNameNew = "../Images/defaulthero.png";
@@ -305,9 +307,7 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
             ) 
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; //need to bind params for placeholders to work // nameNominee is storing allinfo
             
-            $connection = connectToDB();
             $statement = mysqli_stmt_init($connection); 
-
 
             //prepare statement
             if(!mysqli_stmt_prepare($statement, $sqlquery)){
@@ -324,27 +324,12 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
                 $emailParent1,$emailParent2,$emailParent3,$emailParent4,
                 $phoneParent1,$phoneParent2,$phoneParent3,$phoneParent4,
                 $nameNominator,$emailNominator,$phoneNominator,$mediaRelease,$timeSubmission,
-                $headshotNominee,$pic2Nominee,$Captionpic2Nominee,$pic3Nominee,$Captionpic3Nominee,
+                $headshotNominee,$pic2Nominee,$captionPic2,$pic3Nominee,$captionPic3,
                 $bioNominee,$workNominee,$twitterNominee,$facebookNominee,$instagramNominee,
                 $newsNominee,$websiteNominee,$statusNominee,$isYouth,$yearNomination,$resumeNominee
                 );
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful1-" . mysqli_error($connection));
-                    exit();
-                }
-
                 mysqli_stmt_execute($statement);
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful2-" . mysqli_error($connection));
-                    exit();
-                }
-
                 mysqli_stmt_store_result($statement);
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful3-" . mysqli_error($connection));
-                    exit();
-                }
-
                 header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
             }   
   

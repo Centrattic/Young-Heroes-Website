@@ -4,6 +4,8 @@ require 'functions.php';
 
 if(isset($_POST['submit_button'])){
 
+
+
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
 
     if (isset($_FILES['headshotNominee'])) {
@@ -329,23 +331,18 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
                 $newsNominee,$websiteNominee,$statusNominee,$isYouth,$yearNomination,$resumeNominee
                 );
                 if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful1-" . mysqli_error($connection));
-                    exit();
+                    header("Location: ../Frontend/nomination.php?/unsuccessful1" . mysqli_error($connection));
                 }
-
                 mysqli_stmt_execute($statement);
                 if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful2-" . mysqli_error($connection));
-                    exit();
+                    header("Location: ../Frontend/nomination.php?/unsuccessful2" . mysqli_error($connection));
                 }
-
                 mysqli_stmt_store_result($statement);
                 if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful3-" . mysqli_error($connection));
-                    exit();
+                    header("Location: ../Frontend/nomination.php?/unsuccessful3" . mysqli_error($connection));
                 }
 
-                header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
+                //header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
             }   
   
     mysqli_stmt_close($statement);

@@ -2,7 +2,12 @@
 
 require 'functions.php';
 
+header("Location: ../Frontend/nomination.php?/unsuccessful--" . $_POST['submit_button']); //brings back to heroes.php
+
+
 if(isset($_POST['submit_button'])){
+
+
 
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
 
@@ -324,28 +329,23 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
                 $emailParent1,$emailParent2,$emailParent3,$emailParent4,
                 $phoneParent1,$phoneParent2,$phoneParent3,$phoneParent4,
                 $nameNominator,$emailNominator,$phoneNominator,$mediaRelease,$timeSubmission,
-                $headshotNominee,$pic2Nominee,$Captionpic2Nominee,$pic3Nominee,$Captionpic3Nominee,
+                $headshotNominee,$pic2Nominee,$captionPic2,$pic3Nominee,$captionPic3,
                 $bioNominee,$workNominee,$twitterNominee,$facebookNominee,$instagramNominee,
                 $newsNominee,$websiteNominee,$statusNominee,$isYouth,$yearNomination,$resumeNominee
                 );
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful1-" . mysqli_error($connection));
-                    exit();
+                if (mysqli_error($connection) === '') {
+                    header("Location: ../Frontend/nomination.php?/unsuccessful1" . mysqli_error($connection));
                 }
-
                 mysqli_stmt_execute($statement);
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful2-" . mysqli_error($connection));
-                    exit();
+                if (mysqli_error($connection) === '') {
+                    header("Location: ../Frontend/nomination.php?/unsuccessful2" . mysqli_error($connection));
                 }
-
                 mysqli_stmt_store_result($statement);
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful3-" . mysqli_error($connection));
-                    exit();
+                if (mysqli_error($connection) === '') {
+                    header("Location: ../Frontend/nomination.php?/unsuccessful3" . mysqli_error($connection));
                 }
 
-                header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
+                //header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
             }   
   
     mysqli_stmt_close($statement);

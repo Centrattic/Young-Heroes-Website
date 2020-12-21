@@ -4,6 +4,8 @@ require 'functions.php';
 
 if(isset($_POST['submit_button'])){
 
+
+
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
 
     if (isset($_FILES['headshotNominee'])) {
@@ -332,13 +334,11 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
                     header("Location: ../Frontend/nomination.php?/unsuccessful1-" . mysqli_error($connection));
                     exit();
                 }
-
                 mysqli_stmt_execute($statement);
                 if (mysqli_error($connection) != '') {
                     header("Location: ../Frontend/nomination.php?/unsuccessful2-" . mysqli_error($connection));
                     exit();
                 }
-
                 mysqli_stmt_store_result($statement);
                 if (mysqli_error($connection) != '') {
                     header("Location: ../Frontend/nomination.php?/unsuccessful3-" . mysqli_error($connection));

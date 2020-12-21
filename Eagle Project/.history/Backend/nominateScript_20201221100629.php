@@ -1,57 +1,58 @@
 <?php
 
+require 'dbhconnect.php';
 require 'functions.php';
 
 if(isset($_POST['submit_button'])){
 
   /*  mail("pialityagi@gmail.com", "New CSAC Awards Submission!", "Another person has been nominated for a CSAC award.\n Sign in to review the nomination.");*/
 
+
     if (isset($_FILES['headshotNominee'])) {
 
-        $file = $_FILES['headshotNominee']; //files transmits file contents
-        
-        //getting file attributes
-        $fileName = $file['name']; //gets name of file
-        $fileTmpName = $file['tmp_name']; //gets temp location of file
-        $fileSize = $file['size']; //gets size of file
-        $fileError = $file['error']; //checks if error while uploading file
-        $fileType = $file['type']; //gets type of file, /png
+    $file = $_FILES['headshotNominee']; //files transmits file contents
+    
+    //getting file attributes
+    $fileName = $file['name']; //gets name of file
+    $fileTmpName = $file['tmp_name']; //gets temp location of file
+    $fileSize = $file['size']; //gets size of file
+    $fileError = $file['error']; //checks if error while uploading file
+    $fileType = $file['type']; //gets type of file, /png
 
-        if ($fileSize === 0) {
-            $fileNameNew = "../Images/defaulthero.png";
+    } else 
 
-        } else {
-            //restricting file types
-            $fileExt = explode('.', $fileName); //splits file name into file name and file type
-            $fileActualExt = strtolower(end($fileExt)); //makes file type lowercase
-            $allowed = array('jpg', 'png', 'jpeg');
-            $fileNameNew = uniqid('','true').".".$fileActualExt; //creates unqiue id for each image because if images have same name, gets overriden        
-
-            //checks if correct file type is in file
-            if(in_array($fileActualExt, $allowed)){
-                if($fileError === 0) {
-                    //0 means no error uploading
-                    //restricting file size
-                    if($fileSize < 5000000)/*5000000 = 5mb */{
-                        $fileDestination = '../Images/'.$fileNameNew;
-                        //uploading file function
-                        move_uploaded_file($fileTmpName, $fileDestination); //moves file from temp location to real one
-                        echo 'Success!!';
-                        header("Location: nomination.php?uploadSucess=1"); //brings back to heroes.php
-                    }else {
-                        echo 'Your file is too big! Try uploading another file!';
-                    }
-                } else if($fileError === 1) {
-                    //1 means error uploading
-                    echo 'There was an error uploading your file';
-                }
-            } else {
-                echo 'Wrong file type. Only jpg, png or jpeg is allowed';
-            }
-        } 
-    } else {
+    if ($fileSize === 0) {
         $fileNameNew = "../Images/defaulthero.png";
-    }
+
+    } else {
+        //restricting file types
+        $fileExt = explode('.', $fileName); //splits file name into file name and file type
+        $fileActualExt = strtolower(end($fileExt)); //makes file type lowercase
+        $allowed = array('jpg', 'png', 'jpeg');
+        $fileNameNew = uniqid('','true').".".$fileActualExt; //creates unqiue id for each image because if images have same name, gets overriden        
+
+        //checks if correct file type is in file
+        if(in_array($fileActualExt, $allowed)){
+            if($fileError === 0) {
+                //0 means no error uploading
+                //restricting file size
+                if($fileSize < 5000000)/*5000000 = 5mb */{
+                    $fileDestination = '../Images/'.$fileNameNew;
+                    //uploading file function
+                    move_uploaded_file($fileTmpName, $fileDestination); //moves file from temp location to real one
+                    echo 'Success!!';
+                    header("Location: nomination.php?uploadSucess=1"); //brings back to heroes.php
+                }else {
+                    echo 'Your file is too big! Try uploading another file!';
+                }
+            } else if($fileError === 1) {
+                //1 means error uploading
+                echo 'There was an error uploading your file';
+            }
+        } else {
+            echo 'Wrong file type. Only jpg, png or jpeg is allowed';
+        }
+    } 
 
 /*-----------------------------------------------------------------------------*/
 
@@ -305,9 +306,7 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
             ) 
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; //need to bind params for placeholders to work // nameNominee is storing allinfo
             
-            $connection = connectToDB();
             $statement = mysqli_stmt_init($connection); 
-
 
             //prepare statement
             if(!mysqli_stmt_prepare($statement, $sqlquery)){
@@ -324,27 +323,12 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
                 $emailParent1,$emailParent2,$emailParent3,$emailParent4,
                 $phoneParent1,$phoneParent2,$phoneParent3,$phoneParent4,
                 $nameNominator,$emailNominator,$phoneNominator,$mediaRelease,$timeSubmission,
-                $headshotNominee,$pic2Nominee,$Captionpic2Nominee,$pic3Nominee,$Captionpic3Nominee,
+                $headshotNominee,$pic2Nominee,$captionPic2,$pic3Nominee,$captionPic3,
                 $bioNominee,$workNominee,$twitterNominee,$facebookNominee,$instagramNominee,
                 $newsNominee,$websiteNominee,$statusNominee,$isYouth,$yearNomination,$resumeNominee
                 );
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful1-" . mysqli_error($connection));
-                    exit();
-                }
-
                 mysqli_stmt_execute($statement);
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful2-" . mysqli_error($connection));
-                    exit();
-                }
-
                 mysqli_stmt_store_result($statement);
-                if (mysqli_error($connection) != '') {
-                    header("Location: ../Frontend/nomination.php?/unsuccessful3-" . mysqli_error($connection));
-                    exit();
-                }
-
                 header("Location: ../Frontend/viewheroes.php?type=currentwinners"); //brings back to heroes.php
             }   
   
