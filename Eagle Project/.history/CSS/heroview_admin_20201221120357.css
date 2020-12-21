@@ -27,7 +27,6 @@
     border-bottom: none;
     margin-bottom: 3%;
     min-height: 456px;
-    max-height: 500px;
     margin: 0 auto;
     font-size: 0.9em;
     grid-template:
@@ -48,7 +47,6 @@
     display: grid;
     width: 50%;
     min-height: 344px;
-    max-height: 400px;
     margin: 0 auto;
     margin-bottom: 3%;
     font-size: 0.9em;
@@ -60,43 +58,28 @@
 
 }
 
-@media (max-width: 1400px) {
-    .heroGrid1 {
-        width: 60%; 
-    }
 
-    .heroGrid2 {
-        width: 60%;
+@media (max-width: 1400px) {
+    .heroWrapper {
+        width: 60%; 
     }
 }
 
 @media (max-width: 1150px) {
-    .heroGrid1 {
+    .heroWrapper {
         width: 75%; 
-    }
-
-    .heroGrid2 {
-        width: 75%;
     }
 }
 
 @media (max-width: 925px) {
-    .heroGrid1 {
+    .heroWrapper {
         width: 90%; 
-    }
-
-    .heroGrid2 {
-        width: 90%;
     }
 }
 
 @media (max-width: 775px) {
-    .heroGrid1 {
+    .heroWrapper {
         width: 100%; 
-    }
-
-    .heroGrid2 {
-        width: 100%;
     }
 }
 
@@ -180,7 +163,7 @@
 }*/
 
 .work-item {
-    max-height: 100%;
+    max-height: 50%;
     grid-area: work;
     border: 2px solid black;
     overflow-wrap: break-word;

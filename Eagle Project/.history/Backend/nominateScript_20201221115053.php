@@ -194,7 +194,7 @@ $file = $_FILES['resumeNominee']; //files transmits file contents *** THIS SHOUL
         $isYouth = $_POST['isYouth'];
 
         if ($isYouth == 1) {
-            $gradeNominee1 = "Gr. " . $_POST['gradeNominee1'];
+            $gradeNominee1 = "Gr. " . $_POST['gradeNominee1'] . ", ";
             $emailParent1 = $_POST['emailParent1'];
             $schoolNominee1 = $_POST['schoolNominee1'];
             $nameParent1 = $_POST['nameParent1'];

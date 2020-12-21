@@ -575,8 +575,6 @@ if (!function_exists('generateHeroesListing'))   {
 
                     if ($isYouth == 1) {
                         $youthAdult = "Youth Nomination";
-                        $headerstr = " "
-
                     } elseif ($isYouth == 0) {
                         $youthAdult = "Adult Nomination";
                     }
@@ -617,8 +615,9 @@ if (!function_exists('generateHeroesListing'))   {
                                     <table class = 'membertable'>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Age</th>
-                                        $headerstr
+                                        <th>Age/Grade</th>
+                                        <th>Org/School Name</th>
+                                        <th>Email</th>
                                     </tr> 
                                         <tr>
                                             <td>$nameNominee1</td>
@@ -634,12 +633,10 @@ if (!function_exists('generateHeroesListing'))   {
                                 <div class = 'headshot-item'> 
                                     <img class = 'headshot' src= '../Images/$headshotNominee'>
                                 </div>
-
-                                <!-- COMMENTED OUT
                                 <div class = 'bio-item'> 
                                     <b class = 'gridtitle-'> Hero's Biography </b> <br>
                                     $bioNominee
-                                </div>-->
+                                </div>
                                 <div class = 'work-item'> 
                                     <b class = 'grid-title'> Hero's Work </b> <br>
                                     $workNominee
@@ -656,13 +653,12 @@ if (!function_exists('generateHeroesListing'))   {
                     } else {
                         //Admin page
 
-                        $memberInfo1 = "<tr> <td>$nameNominee1</td> <td>$emailNominee1</td>  <td> $ageNominee1</td> <td>$gradeNominee1</td> <td>$schoolNominee1</td>";
-                        $memberInfo2 = "<tr> <td>$nameNominee2</td> <td>$emailNominee2</td>  <td>  $ageNominee2</td>  <td>$gradeNominee2</td> <td>$schoolNominee2</td>";
-                        $memberInfo3 = "<tr> <td>$nameNominee3</td> <td>$emailNominee3</td> <td>  $ageNominee3</td> <td>$gradeNominee3</td>  <td>$schoolNominee3</td>";
-                        $memberInfo4 = "<tr> <td>$nameNominee4</td> <td>$emailNominee4</td> <td>  $ageNominee4</td> <td>$gradeNominee4</td> <td>$schoolNominee4</td>";
+                        $memberInfo1 = "<tr> <td>$nameNominee1</td> <td>$emailNominee1</td> <td>$gradeNominee1 $ageNominee1</td> <td>$schoolNominee1</td>";
+                        $memberInfo2 = "<tr> <td>$nameNominee2</td> <td>$emailNominee2</td> <td>$gradeNominee2 $ageNominee2</td> <td>$schoolNominee2</td>";
+                        $memberInfo3 = "<tr> <td>$nameNominee3</td> <td>$emailNominee3</td> <td>$gradeNominee3 $ageNominee3</td> <td>$schoolNominee3</td>";
+                        $memberInfo4 = "<tr> <td>$nameNominee4</td> <td>$emailNominee4</td> <td>$gradeNominee4 $ageNominee4</td> <td>$schoolNominee4</td>";
 
                         if ($isYouth == "1") {
-                            $headerstr = "<th>Grade</th> <th>School Name</th> ";
                             /*$headerstr= "<th>Parent Name</th><th>Parent Email</th> <th>Parent Phone</th>";
                             $memberInfo1 = $memberInfo1 . "<td>$nameParent1</td> <td>$emailParent1</td> <td>$phoneParent1</td> </tr>";
                             $memberInfo2 = $memberInfo2 . "<td>$nameParent2</td> <td>$emailParent2</td> <td>$phoneParent2</td> </tr>";
@@ -678,22 +674,15 @@ if (!function_exists('generateHeroesListing'))   {
                                     <th>Parent Email</th>
                                     <th>Parent Phone</th>
                                 </tr>
-                                    $parentInfo
-                                </table>
-                            </div>";
-
-                            
-                            $nominatorItem = "<div class = 'nominator-item'> 
-                            <p><b>Nominated by: </b> $nameNominator, $emailNominator, $phoneNominator</p> 
-                            <p> <b> Submission Time: </b> $timeSubmission</p>
+                                $parentInfo
+                            </table>
                         </div>";
-
                         }  elseif ($isYouth == "0") {
                             $headerstr = "<th>Nominee Phone</th>";
-                            $memberInfo1 = "<tr> <td>$nameNominee1</td> <td>$emailNominee1</td>  <td> $ageNominee1</td> <td>$phoneParent1</td>";
-                            $memberInfo2 = "<tr> <td>$nameNominee2</td> <td>$emailNominee2</td>  <td>  $ageNominee2</td>  <td>$phoneParent2</td>";
-                            $memberInfo3 = "<tr> <td>$nameNominee3</td> <td>$emailNominee3</td> <td>  $ageNominee3</td> <td>$phoneParent3</td>";
-                            $memberInfo4 = "<tr> <td>$nameNominee4</td> <td>$emailNominee4</td> <td>  $ageNominee4</td> <td>$phoneParent4</td>";
+                            $memberInfo1 = $memberInfo1 . "<td>$phoneParent1</td> </tr>";
+                            $memberInfo2 = $memberInfo2 . "<td>$phoneParent2</td> </tr>";
+                            $memberInfo3 = $memberInfo3 . "<td>$phoneParent3</td> </tr>";
+                            $memberInfo4 = $memberInfo4 . "<td>$phoneParent4</td> </tr>";
 
                             $nominatorInfo = "<tr> <td>$nameNominator</td> <td>$emailNominator</td> <td>$phoneNominator</td> </tr>";
 
@@ -707,9 +696,6 @@ if (!function_exists('generateHeroesListing'))   {
                                 </tr>
                                 $nominatorInfo
                             </table>
-                        </div>";
-                        $nominatorItem = "<div class = 'nominator-item'> 
-                            <p> <b> Submission Time: </b> $timeSubmission</p>
                         </div>";
                         }
 
@@ -744,7 +730,7 @@ if (!function_exists('generateHeroesListing'))   {
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Age</th>
-                                        $headerstr
+                                        <th>School Name</th>
                                     </tr> 
                                         $memberInfo1
                                         $memberInfo2
@@ -778,7 +764,7 @@ if (!function_exists('generateHeroesListing'))   {
 
                                 <div class = 'contact-item'>
                                     <b class = 'grid-title'> Hero's Contact </b>  <br>
-                                        <b> Miscellaneous: </b> <a class = 'sociallink' target = '_blank' href = '../Images/$resumeNominee'> Additional Info</a> <br>
+                                        <b> Resumé: </b> <a class = 'sociallink' target = '_blank' href = '../Images/$resumeNominee'> Resumé Link</a> <br>
                                         <b> Facebook: </b> <a class = 'sociallink' target = '_blank' href = '$facebookNominee'>Facebook Link</a>  <br>
                                         <b> Instagram: </b> <a class = 'sociallink' target = '_blank' href = '$instagramNominee'>Instagram Link </a>
                                 </div>
@@ -786,7 +772,6 @@ if (!function_exists('generateHeroesListing'))   {
                                 <div class = 'pic2-item'> 
                                     <img class = 'pic2-pic' src= '../Images/$pic2Nominee'>
                                 </div>
-
                                 <div class = 'pic3-item'> 
                                     <img class = 'pic3-pic' src= '../Images/$pic3Nominee'>
                                 </div>

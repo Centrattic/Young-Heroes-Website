@@ -575,8 +575,6 @@ if (!function_exists('generateHeroesListing'))   {
 
                     if ($isYouth == 1) {
                         $youthAdult = "Youth Nomination";
-                        $headerstr = " "
-
                     } elseif ($isYouth == 0) {
                         $youthAdult = "Adult Nomination";
                     }
@@ -617,8 +615,9 @@ if (!function_exists('generateHeroesListing'))   {
                                     <table class = 'membertable'>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Age</th>
-                                        $headerstr
+                                        <th>Age/Grade</th>
+                                        <th>Org/School Name</th>
+                                        <th>Email</th>
                                     </tr> 
                                         <tr>
                                             <td>$nameNominee1</td>
@@ -691,9 +690,9 @@ if (!function_exists('generateHeroesListing'))   {
                         }  elseif ($isYouth == "0") {
                             $headerstr = "<th>Nominee Phone</th>";
                             $memberInfo1 = "<tr> <td>$nameNominee1</td> <td>$emailNominee1</td>  <td> $ageNominee1</td> <td>$phoneParent1</td>";
-                            $memberInfo2 = "<tr> <td>$nameNominee2</td> <td>$emailNominee2</td>  <td>  $ageNominee2</td>  <td>$phoneParent2</td>";
-                            $memberInfo3 = "<tr> <td>$nameNominee3</td> <td>$emailNominee3</td> <td>  $ageNominee3</td> <td>$phoneParent3</td>";
-                            $memberInfo4 = "<tr> <td>$nameNominee4</td> <td>$emailNominee4</td> <td>  $ageNominee4</td> <td>$phoneParent4</td>";
+                        $memberInfo2 = "<tr> <td>$nameNominee2</td> <td>$emailNominee2</td>  <td>  $ageNominee2</td>  <td>$phoneParent2</td>";
+                        $memberInfo3 = "<tr> <td>$nameNominee3</td> <td>$emailNominee3</td> <td>  $ageNominee3</td> <td>$phoneParent3</td>";
+                        $memberInfo4 = "<tr> <td>$nameNominee4</td> <td>$emailNominee4</td> <td>  $ageNominee4</td> <td>$phoneParent4</td>";
 
                             $nominatorInfo = "<tr> <td>$nameNominator</td> <td>$emailNominator</td> <td>$phoneNominator</td> </tr>";
 

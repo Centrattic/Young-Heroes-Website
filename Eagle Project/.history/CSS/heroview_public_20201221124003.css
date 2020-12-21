@@ -113,13 +113,13 @@
     object-fit: cover;
 }
 
-/*
+
 .bio-item {
     grid-area: bio;
     border: 2px solid black;
     overflow-wrap: anywhere;
 }
-*/
+
 .work-item {
     grid-area: work;
     border: 2px solid black;

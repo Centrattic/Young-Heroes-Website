@@ -70,35 +70,24 @@
     }
 }
 
-@media (max-width: 1150px) {
-    .heroGrid1 {
+/*@media (max-width: 1150px) {
+    .heroWrapper {
         width: 75%; 
-    }
-
-    .heroGrid2 {
-        width: 75%;
     }
 }
 
 @media (max-width: 925px) {
-    .heroGrid1 {
+    .heroWrapper {
         width: 90%; 
-    }
-
-    .heroGrid2 {
-        width: 90%;
     }
 }
 
 @media (max-width: 775px) {
-    .heroGrid1 {
+    .heroWrapper {
         width: 100%; 
     }
+}*/
 
-    .heroGrid2 {
-        width: 100%;
-    }
-}
 
 * {
     text-align: center;

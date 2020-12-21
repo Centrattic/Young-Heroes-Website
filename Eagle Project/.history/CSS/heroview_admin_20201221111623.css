@@ -1,6 +1,5 @@
-.heroViewWrapper {
+/*.heroWrapper {
     border: 5px solid black;
-    background-color: white;
     display: grid;
     width: 50%;
     min-height: 800px;
@@ -9,34 +8,77 @@
     font-size: 0.9em;
     grid-template:
     "name name name" 5%
-    "youth-adult youth-adult youth-adult" 4%
-    "members members members" 15%
-    "headshot work work" 20%
-    "headshot work work" 23%
-    "pic2 pic2 pic3" 33%
+    "members members members" 15.5%
+    /*"headshot category category" 5%
+    "headshot bio bio" 14.5%
+    "headshot work work" 21.5%
+    "contact contact contact" 12%
+    "pic2 pic2 pic3" 25%
+    "nominator nominator nominator" 6%
     / 35% 20% 45%;
+}*/
+
+
+.heroGrid1 {
+    border: 5px solid black;
+    background-color: white;
+    display: grid;
+    width: 50%;
+    border-bottom: none;
+    margin-bottom: 3%;
+    min-height: 456px;
+    margin: 0 auto;
+    font-size: 0.9em;
+    grid-template:
+    "name name name" 9%
+    "youth-adult youth-adult youth-adult" 7%
+    "members members members" 23%
+    /*"headshot category category" 5%*/
+    "headshot work work" 29%
+    "headshot work work" 32%
+    / 35% 20% 45%;
+
 }
 
+.heroGrid2 {
+    border: 5px solid black;
+    background-color: white;
+    border-top: none;
+    display: grid;
+    width: 50%;
+    min-height: 344px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    font-size: 0.9em;
+    grid-template:
+    "contact parent parent" 28%
+    "pic2 pic2 pic3" 58%
+    "nominator nominator nominator" 14%
+    / 35% 20% 45%;
+
+}
+
+
 @media (max-width: 1400px) {
-    .heroViewWrapper {
+    .heroWrapper {
         width: 60%; 
     }
 }
 
 @media (max-width: 1150px) {
-    .heroViewWrapper {
+    .heroWrapper {
         width: 75%; 
     }
 }
 
 @media (max-width: 925px) {
-    .heroViewWrapper {
+    .heroWrapper {
         width: 90%; 
     }
 }
 
 @media (max-width: 775px) {
-    .heroViewWrapper {
+    .heroWrapper {
         width: 100%; 
     }
 }
@@ -76,16 +118,15 @@
     overflow: auto;
 }
 
-.membertable, .membertable td, .membertable th {
+.membertable, .membertable td, .membertable th, .parent-table, .parent-table td, .parent-table th {
     padding: 4px;
     border: 1px solid black;
 }
 
 
-.membertable {
+.membertable, .parent-table{
     min-width: 120%;
     border-collapse: collapse;
-
 }
 
 .members-item p {
@@ -118,14 +159,45 @@
     grid-area: bio;
     border: 2px solid black;
     overflow-wrap: anywhere;
-}
-*/
+}*/
+
 .work-item {
     grid-area: work;
     border: 2px solid black;
     overflow-wrap: anywhere;
 }
 
+.parent-item {
+    grid-area: parent;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}
+
+.contact-item {
+    grid-area: contact;
+    border: 2px solid black;
+    overflow-wrap: anywhere;
+}
+
+.contact-info {
+    grid-area: contact-info;
+    border-bottom: 1px solid gray;
+
+}
+
+.social {
+    grid-area: social;
+    overflow:auto;
+    text-align: left;
+    border: 1px solid gray;
+}
+
+.social1 {
+    overflow:auto;
+    grid-area: social1;
+    text-align: left;
+    border:1px solid gray;
+}
 
 .pic2-item {
     grid-area: pic2;
@@ -147,4 +219,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.nominator-item {
+    grid-area: nominator;
+    font-size: 1.25em;
+}
+
+.print-grid-1, .print-grid-2 {
+    all: unset;
 }
